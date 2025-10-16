@@ -209,10 +209,14 @@
     function timer(){  
         if (active) {
             etime = parseInt( (new Date() - startTime)/1000 );
-            rest = period - etime;　
+            rest = period - etime;
             $("#time").html("経過時間： " + etime);
             $("#remain").html("残り時間： " + rest);
             analog(rest);
+        }
+        if(rest <= 0) {
+            active == false;
+            alarm();
         }
     } 
 
@@ -226,7 +230,7 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
-    <button id="btnA">ButtonA</button>  
+    <button id="btnA">Start</button>  
     <button id="btnB">ButtonB</button>  
     <button id="btnC">ButtonC</button>  
     <input type="number" id="minute" value=3 >
